@@ -1,0 +1,6 @@
+name: Christmas
+version: '${project.version}'
+main: de.rubymc.christmas.Main
+api-version: 1.16
+authors: [ Waischbrot, NotJan ]
+description: Christmas plugin for rubymc
