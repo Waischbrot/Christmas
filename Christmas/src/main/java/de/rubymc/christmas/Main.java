@@ -8,7 +8,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
-import de.rubymc.christmas.stars.placeholderapi.ClipPlaceholder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +18,7 @@ public final class Main extends JavaPlugin {
     public static Main plugin;
     private List<String> enabledAnimations;
     private String prefix;
-    private Boolean starsEnabled;
+    private Boolean starsFinishEnabled;
     private List<String> starsFinishCommands;
     private int topValue;
     private String topFormat;
@@ -37,9 +36,6 @@ public final class Main extends JavaPlugin {
 
         this.getCommand("santa").setExecutor(new Commands());
         Bukkit.getPluginManager().registerEvents(new Starhandler(), this);
-        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
-            (new ClipPlaceholder()).load();
-        }
 
         this.loadStarSettings(true);
     }
@@ -61,8 +57,8 @@ public final class Main extends JavaPlugin {
         }
 
         this.prefix = ChatColor.translateAlternateColorCodes('&', c.getString("messages.prefix"));
-        this.starsEnabled = c.getBoolean("stars.finish.enabled");
-        this.starsFinishCommands = c.getStringList("stars.finish.command");
+        this.starsFinishEnabled = c.getBoolean("stars.finish.enabled");
+        this.starsFinishCommands = c.getStringList("stars.finish.commands");
         this.topValue = c.getInt("stars.top.value");
         this.topFormat = c.getString("stars.top.format");
         this.animationEnabled = c.getBoolean("stars.animation.enabled");
@@ -89,8 +85,8 @@ public final class Main extends JavaPlugin {
         return this.prefix;
     }
 
-    public boolean starsEnabled() {
-        return this.starsEnabled;
+    public boolean starsFinishEnabled() {
+        return this.starsFinishEnabled;
     }
 
     public List<String> starsFinishCommands() {
