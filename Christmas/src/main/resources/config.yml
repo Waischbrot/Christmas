@@ -17,3 +17,27 @@ snow:
     - 'MESA_PLATEAU'
   #don't spawn SnowFlakes under blocks.
   fixedspawn: true
+
+#change specific messages in the plugin
+messages:
+  prefix: '&8➤ &cWeihnachts&fevent &8| &r'
+#configure the starsystem
+stars:
+  finish:
+    enabled: false
+    commands:
+      - 'say &b%player% &7hat jeden &l&cS&fa&4n&ct&fa &7gefunden!!!'
+  top:
+    value: 10
+    format: '%prefix%&f#%place% &c%player%&7: &f%stars%'
+  animation:
+    enabled: false
+  foundmessage:
+    enabled: false
+    found: '%prefix% &7Du hast einen &l&cS&l&fa&l&4n&L&ct&l&fa &7gefunden!'
+    alreadyfound: '%prefix% &7Du hast diesen &l&cS&l&fa&l&4n&L&ct&l&fa &7bereits gefunden!'
+  delay: 0
+
+permission:
+  command: 'christmas.admin'
+  topcommand: 'christmas.top'
